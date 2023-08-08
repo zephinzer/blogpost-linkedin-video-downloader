@@ -17,7 +17,7 @@ curl "https://streamwus2-livectorprodmedia11-usw22.licdn.com/${VIDEO_ID}/manifes
 		-H 'Origin: https://www.linkedin.com' --compressed \
 		> ./data/quality_manifest;
 
-QUALITY_LEVEL="$(cat ./data/manifest | grep -v '#' | cut -f 2 -d '(' | cut -f 1 -d ')' | sort -n | tail -n 1)";
+QUALITY_LEVEL="$(cat ./data/quality_manifest | grep -v '#' | cut -f 2 -d '(' | cut -f 1 -d ')' | sort -n | tail -n 1)";
 echo "QUALITY_LEVEL: ${QUALITY_LEVEL}";
 
 curl "https://streamwus2-livectorprodmedia11-usw22.licdn.com/${VIDEO_ID}/QualityLevels(${QUALITY_LEVEL})/Manifest(video,format=m3u8-aapl-v3,audiotrack=audio_und)" \
